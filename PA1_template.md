@@ -43,6 +43,7 @@ head(activity)
 
 ```r
 # remove missing values
+# Note: Using na.rm=TRUE instead would result in an incorrect sum of 0 for days with all NA values
 activity1 <- activity[!is.na(activity$steps),]
 # calculate total number of steps per day
 by_day <- summarize(group_by(activity1,date), sum(steps))
@@ -193,4 +194,4 @@ xyplot(steps ~ interval | day, data = by_interval, type = "l", layout = c(1, 2),
 
 ![](PA1_template_files/figure-html/unnamed-chunk-12-1.png) 
 
-The above plots show some small differences in activity patterns between weekdays and weekends.
+The above plots show some difference in activity patterns between weekdays and weekends. The weekday plot shows a siginificant activity spike in the morning, followed by much lower levels throughout the remaining waking hours, whereas the activity level during the waking hours on the weekend is more uniform.
